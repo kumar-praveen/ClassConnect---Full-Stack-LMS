@@ -50,9 +50,10 @@ ClassConnect is a full‑stack **Learning Management System (LMS)** built with t
 ## 🏗️ Tech Stack
 
 **Frontend**
-- React (SPA – likely with Vite or CRA)
+- React
 - React Router
-- CSS framework / custom styling (e.g., Bootstrap / Tailwind / custom)
+- CSS framework / custom styling (Tailwind / custom)
+- ShadCN UI library
 
 **Backend**
 - Node.js
@@ -67,28 +68,38 @@ ClassConnect is a full‑stack **Learning Management System (LMS)** built with t
 
 ## 📁 Project Structure (example)
 
+## 🧱 Project Structure
+
+The project is organized as a monorepo with separate **backend** (Node/Express API) and **frontend** (React) apps.
+
 ```bash
-classconnect/
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── hooks/
-│   │   ├── context/
-│   │   └── App.jsx
-│   └── package.json
+ClassConnect/
+├── backend/                    # Node.js + Express server
+│   ├── controllers/            # Route handlers / business logic
+│   ├── middleware/             # Auth, error handling, etc.
+│   ├── models/                 # Mongoose models (User, Course, Lecture)
+│   ├── routes/                 # Express route definitions (auth, courses, lectures)
+│   ├── utils/                  # Reusable helpers (e.g. tokens, validators)
+│   ├── node_modules/
+│   ├── .env                    # Backend environment variables (Mongo URI, JWT secret, etc.)
+│   ├── index.js                # Entry point for the backend server
+│   ├── package.json
+│   └── package-lock.json
 │
-└── server/                 # Node/Express backend
-    ├── models/
-    │   ├── User.model.js
-    │   ├── Course.model.js
-    │   └── Lecture.model.js
-    ├── routes/
-    │   ├── auth.routes.js
-    │   ├── course.routes.js
-    │   └── lecture.routes.js
-    ├── controllers/
-    ├── middleware/
-    ├── config/
-    ├── server.js / index.js
-    └── package.json
+├── frontend/                   # React client application
+│   ├── public/                 # Static files (index.html, favicons, etc.)
+│   ├── src/
+│   │   ├── assets/             # Images, icons, static assets
+│   │   ├── components/         # Reusable UI components
+│   │   ├── lib/                # API wrappers, utilities, config
+│   │   ├── pages/              # Page-level components mapped to routes
+│   │   ├── redux/              # Redux store, slices, actions
+│   │   ├── App.jsx             # Root app component / routes
+│   │   ├── index.css           # Global styles
+│   │   └── main.jsx            # React entry point (renders App to DOM)
+│   ├── node_modules/
+│   ├── .env                    # Frontend environment variables (API base URL, etc.)
+│   ├── package.json
+│   └── package-lock.json
+│
+└── README.md                   # Project documentation
